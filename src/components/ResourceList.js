@@ -1,24 +1,26 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
+import useResource from "./useResource";
 const ResourceList = ({ resource }) => {
-  console.log(resource);
-  const [resources, setResource] = useState([]);
-  //   const fetchResource = async (resource) => {
-  //     const response = await axios.get(
-  //       `https://jsonplaceholder.typicode.com/${resource}`
-  //     );
-  //     setResource(response.data);
-  //   };
-  useEffect(() => {
-    (async () => {
-      const response = await axios.get(
-        `https://jsonplaceholder.typicode.com/${resource}`
-      );
-      setResource(response.data);
-    })(resource);
-    // immediate invoke function js
-  }, [resource]);
-
+  //   console.log(resource);
+  //   const [resources, setResource] = useState([]);
+  //   //   const fetchResource = async (resource) => {
+  //   //     const response = await axios.get(
+  //   //       `https://jsonplaceholder.typicode.com/${resource}`
+  //   //     );
+  //   //     setResource(response.data);
+  //   //   };
+  //   useEffect(() => {
+  //     (async () => {
+  //       const response = await axios.get(
+  //         `https://jsonplaceholder.typicode.com/${resource}`
+  //       );
+  //       setResource(response.data);
+  //     })(resource);
+  //     // immediate invoke function js
+  //   }, [resource]);
+  //   return resource;
+  const resources = useResource(resource);
+  console.log(resources);
   return (
     <ul>
       {resources.map((item) => {
