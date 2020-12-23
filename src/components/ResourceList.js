@@ -16,6 +16,16 @@ class ResourceList extends Component {
       resource: response.data,
     });
   }
+  async componentDidUpdate(preProps) {
+    if (preProps.resource !== this.props.resource) {
+      const response = await axios.get(
+        `https://jsonplaceholder.typicode.com/${this.props.resource}`
+      );
+      this.setState({
+        resource: response.data,
+      });
+    }
+  }
   render() {
     return <div>{this.state.resource.length}</div>;
   }
