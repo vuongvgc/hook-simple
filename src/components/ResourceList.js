@@ -19,7 +19,13 @@ const ResourceList = ({ resource }) => {
     // immediate invoke function js
   }, [resource]);
 
-  return <div>{resources.length}</div>;
+  return (
+    <ul>
+      {resources.map((item) => {
+        return <li key={item.id}>{item.title}</li>;
+      })}
+    </ul>
+  );
 };
 
 export default ResourceList;
